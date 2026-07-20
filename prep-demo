@@ -17,9 +17,9 @@ curl -i -X POST http://localhost:8088/recorder/clearall
 
 # Remove quarkus extensions so we can show adding them
 
-cd wookie-tamer
-quarkus extension remove quarkus-pact-provider
-cd ../weaver
-quarkus extension remove quarkus-pact-consumer
-cd ..
+#cd wookie-tamer
+#quarkus extension remove quarkus-pact-provider
+#cd ../weaver
+#quarkus extension remove quarkus-pact-consumer
+#cd ..
 
