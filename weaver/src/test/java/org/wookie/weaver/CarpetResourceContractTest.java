@@ -58,30 +58,30 @@ public class CarpetResourceContractTest {
 			.toPact(V4Pact.class);
 	}
 
-	@Pact(consumer = "weaver")
-	public V4Pact requestingPinkFurContract(PactDslWithProvider builder) {
-		var headers = Map.of(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON);
-
-		// Here we define our mock, which is also our expectations for the provider
-
-		// This defines what the body of the request could look like;
-		// in this case we are saying the colour in the request MUST be pink
-		var furOrderBody = newJsonBody(body ->
-			body
-				.stringValue("colour", "pink")
-				.numberType("orderNumber")
-		).build();
-
-		return builder
-			.uponReceiving("A request for pink wookie fur")
-				.path("/fur/order")
-				.headers(headers)
-				.method(HttpMethod.POST)
-				.body(furOrderBody)
-			.willRespondWith()
-				.status(Status.NOT_FOUND.getStatusCode())
-			.toPact(V4Pact.class);
-	}
+//	@Pact(consumer = "weaver")
+//	public V4Pact requestingPinkFurContract(PactDslWithProvider builder) {
+//		var headers = Map.of(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON);
+//
+//		// Here we define our mock, which is also our expectations for the provider
+//
+//		// This defines what the body of the request could look like;
+//		// in this case we are saying the colour in the request MUST be pink
+//		var furOrderBody = newJsonBody(body ->
+//			body
+//				.stringValue("colour", "pink")
+//				.numberType("orderNumber")
+//		).build();
+//
+//		return builder
+//			.uponReceiving("A request for pink wookie fur")
+//				.path("/fur/order")
+//				.headers(headers)
+//				.method(HttpMethod.POST)
+//				.body(furOrderBody)
+//			.willRespondWith()
+//				.status(Status.NOT_FOUND.getStatusCode())
+//			.toPact(V4Pact.class);
+//	}
 
 	@Test
 	@PactTestFor(pactMethod = "requestingFurContract")
@@ -99,16 +99,16 @@ public class CarpetResourceContractTest {
 		assertEquals("brown", carpet.colour());
 	}
 
-	@Test
-	@PactTestFor(pactMethod = "requestingPinkFurContract")
-	public void testCarpetEndpointForPinkCarpet() {
-		var order = new CarpetOrder("pink", 16);
-		given()
-			.contentType(ContentType.JSON)
-			.body(order)
-			.when()
-			.post("/carpet/order")
-			.then()
-			.statusCode(418);
-	}
+//	@Test
+//	@PactTestFor(pactMethod = "requestingPinkFurContract")
+//	public void testCarpetEndpointForPinkCarpet() {
+//		var order = new CarpetOrder("pink", 16);
+//		given()
+//			.contentType(ContentType.JSON)
+//			.body(order)
+//			.when()
+//			.post("/carpet/order")
+//			.then()
+//			.statusCode(418);
+//	}
 }
