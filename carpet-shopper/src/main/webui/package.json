@@ -14,7 +14,7 @@
 		"roughjs": "^4.6.6",
 		"styled-components": "^6.5.3",
 		"universal-cookie": "^8.1.2",
-		"web-vitals": "^6.1.1"
+		"web-vitals": "^6.2.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
